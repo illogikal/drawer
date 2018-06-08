@@ -14,9 +14,9 @@ const trnasitionEndObject = {
   OTransition: 'oTransitionEnd otransitionend',
 };
 const trnasitionStr = Object.keys(trnasitionEndObject).filter(key => {
-  if (typeof document === 'undefined') {
+  if (typeof document === 'undefined' || !document.body) {
     return false;
   }
-  return key in (document.body && document.body.style);
+  return key in document.body.style;
 })[0];
 export const transitionEnd = trnasitionEndObject[trnasitionStr];
